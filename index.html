@@ -1,127 +1,465 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Aura and the Empty Tunnels</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<!doctype html>
+<html lang="my">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>သဲလေးအတွက် တောင်းပန်လွှာ ❤️</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Font for Myanmar Text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        /* --- Basic Reset for Consistency --- */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Georgia', serif; /* Classic, readable serif font */
-    line-height: 1.6; /* Good spacing for easy reading */
-    color: #333; /* Dark gray for softer contrast than pure black */
-    background-color: #f8f8f8; /* Very light gray/off-white background */
-}
+      * {
+        font-family: "Padauk", "Poppins", sans-serif;
+      }
 
-/* --- Main Content Area --- */
-.story-container {
-    max-width: 700px; /* Optimal width for comfortable reading length */
-    margin: 40px auto; /* Centers the content block horizontally, 
-                           adds vertical spacing */
-    padding: 30px;
-    background-color: #fff; /* White background for the text itself */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
+      /* Floating background hearts animation */
+      .bg-heart {
+        position: absolute;
+        color: rgba(244, 114, 182, 0.25);
+        animation: float 8s infinite linear;
+        z-index: 0;
+        pointer-events: none;
+      }
 
-/* --- Typography (Headings and Paragraphs) --- */
-h1 {
-    font-family: 'Palatino Linotype', 'Book Antiqua', serif;
-    font-size: 2.2em;
-    color: #1a1a1a;
-    margin-top: 0; /* Remove default top margin */
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
-}
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg) scale(0.8);
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(360deg) scale(1.2);
+          opacity: 0;
+        }
+      }
 
-h2 {
-    font-size: 1.6em;
-    color: #444;
-    margin-top: 30px;
-}
+      /* Smooth card transitions */
+      .fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
+      }
 
-p {
-    margin-bottom: 1.5em; /* Space between paragraphs */
-    text-align: justify; /* Optional: aligns text to both edges */
-    font-size: 1.1em; /* Slightly larger base font size */
-    text-indent: 2em; /* Classic story indentation for paragraphs */
-}
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
 
-/* Remove text-indent for the very first paragraph after a heading */
-h1 + p, h2 + p {
-    text-indent: 0;
-}
+      /* Custom dodge button transition */
+      .runaway-btn {
+        transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
 
-/* --- Special Formatting (e.g., Blockquotes or Dialogue) --- */
-blockquote {
-    border-left: 4px solid #aaa;
-    padding-left: 15px;
-    margin: 20px 0 20px 20px;
-    font-style: italic;
-    color: #555;
-}
+      /* Pulse glow animation */
+      .pulse-glow {
+        animation: pulseGlow 2s infinite ease-in-out;
+      }
 
-/* --- Optional: Section/Chapter Separator --- */
-.chapter-break {
-    text-align: center;
-    margin: 40px 0;
-    font-size: 1.5em;
-    color: #888;
-    letter-spacing: 0.3em;
-}
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 15px rgba(244, 63, 94, 0.4);
+        }
+        50% {
+          box-shadow: 0 0 25px rgba(244, 63, 94, 0.7);
+        }
+      }
+
+      /* Sparkle animation */
+      @keyframes sparkleAnim {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.2) rotate(180deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .sparkle {
+        position: absolute;
+        pointer-events: none;
+        animation: sparkleAnim 0.8s ease-in-out forwards;
+      }
     </style>
-    <body>
-        <div class="story-container">
-            <h4>Made by HanLinHtet</h4>
-                        <h1>Aura and the Empty Tunnels</h1>
-            <p>The Black Ant colony was a whirlwind of disciplined activity beneath the great oak tree.
-            Every ant scurried with purpose, carrying crumbs and seeds.
-            Among them was <b>Aura</b>, known throughout the tunnels not for her size, <b>but</b> for her <b>unmatched speed and cleverness.</b>
-            <b>Although</b> she was often tasked with simple scouting duties, Aura dreamed of protecting her kingdom from its most ancient enemy: the Red Ants.
-            For years, the two colonies had lived in a tense, silent rivalry. <b>However</b>, today was different.
-            A frantic messenger burst into the main chamber, gasping out the news: “The Red Ants have begun construction!
-            They are using small stones and sap to build a wall near the Clover Field—the best foraging ground!”
-            Queen Vita struck her antennae against the stone floor.
-           “This is an act of war!” <b>Aura, meanwhile,</b> listened carefully. 
-            She knew losing that field meant certain starvation for many. <b>Therefore,</b> she immediately stepped forward.
-            “My Queen,” Aura said, “Allow me to go. I will scout the construction and find a weakness. 
-            ” The Queen commanded, “Go, Aura. But be careful. We need information, not a battle.”
-            <br>
-            <p>Aura moved with silent precision. <b>First,</b> she had to cross the wide, open dirt path without being seen.
-            <b>After a difficult journey,</b> she reached the Red Ant construction site.
-        Peering under a dry leaf, she spotted <b>King Rix</b> planning with his advisor, General Varr.
-    The conversation confirmed her fears: "The wall is a good start, <b>but</b> it isn't enough... <b>However,</b> if we launch a direct attack on their main food storage tonight, we can end this quickly... <b>Therefore, While</b> they are distracted by the wall, the main force strikes their storage tunnels at midnight."
-Aura broke cover and began her frantic run back.
-<b>Just as</b> she reached the open path, the sky suddenly broke open, turning into a torrential downpour.
- The dirt path quickly transformed into a thick, muddy trap.
- Aura tried to run, <b>but</b> her tiny legs sank with every step.
-<b>Although</b> the main path was impossible, she spotted a cluster of fungus.
-<b>Finally,</b> she climbed onto the fungus.
-It was a slippery, treacherous shortcut, <b>yet</b> it kept her above the worst of the mud.</p>
-<br>
-<p>Aura stumbled into the main tunnel just moments before the midnight watch began.
-    <b>Immediately,</b> she was rushed to Queen Vita.
-    "My Queen! The wall is a trick! <b>In fact,</b> the main attack is tonight—on the food storage!" Queen Vita’s face hardened.
-    "<b>Although</b> we are prepared to fight, we are also smart," she announced.
-    "<b>Therefore,</b> we will not fight their midnight attack; we will empty the tunnels!"
-    Orders flew out, directing every Black Ant to quickly move the winter supply to a secret, empty chamber.
-    At midnight, King Rix and his shock troops burst into the storage tunnels, expecting mountains of seeds.
-    <b>Instead,</b> they found nothing but dust and a single, carefully placed sign: The Black Ant Kingdom invites you to negotiate.
-    King Rix was furious <b>yet</b> defeated.
-    <b>Consequently,</b> he had no choice.
-    The next morning, a tired, mud-caked Aura watched as King Rix of the Red Ants was forced to crawl to Queen Vita's chamber, not for war, <b>but</b> for peace.
-    From that day on, Aura was not just known for her speed, <b>but</b> for the wisdom that saved the entire kingdom.
-    The Black Ants realized that true strength lay not in the size of their soldiers, <b>but</b> in the brilliance of their scouts.
-</p>
+  </head>
+  <body
+    class="bg-gradient-to-br from-rose-100 via-pink-100 to-amber-50 min-h-screen flex items-center justify-center p-4 overflow-hidden relative selection:bg-rose-200"
+  >
+    <!-- Background Floating Hearts Container -->
+    <div
+      id="heartsContainer"
+      class="fixed inset-0 overflow-hidden pointer-events-none z-0"
+    ></div>
 
-        
-        </p>
+    <!-- Main Card Container -->
+    <main
+      class="relative z-10 w-full max-w-lg bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-white/60 p-6 md:p-8 text-center transition-all duration-300"
+    >
+      <!-- Header Sticker Icon -->
+      <div class="mb-4 relative inline-block">
+        <div
+          id="stickerIcon"
+          class="text-6xl md:text-7xl transform transition-transform duration-300 hover:scale-110"
+        >
+          🐱‍💻
         </div>
-    </body>
+        <span
+          class="absolute -top-2 -right-2 bg-rose-500 text-white text-xs px-2 py-0.5 rounded-full shadow-md animate-bounce"
+        >
+          Special!
+        </span>
+      </div>
+
+      <!-- Dynamic Content Box -->
+      <div
+        id="contentBox"
+        class="fade-in min-h-[140px] flex items-center justify-center my-2"
+      >
+        <p
+          id="storyText"
+          class="text-gray-800 text-lg md:text-xl font-bold leading-relaxed whitespace-pre-line"
+        >
+          <!-- Text populated via JS -->
+        </p>
+      </div>
+
+      <!-- Action Buttons Container -->
+      <div
+        id="buttonArea"
+        class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 min-h-[60px] relative"
+      >
+        <!-- Buttons injected via JS -->
+      </div>
+    </main>
+
+    <!-- Forgive Celebration Modal -->
+    <div
+      id="forgiveModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"
+    >
+      <div
+        class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border-4 border-rose-200 transform scale-95 transition-transform duration-300 relative overflow-hidden"
+      >
+        <!-- Decorative Hearts -->
+        <div class="text-5xl mb-3 animate-bounce">💖</div>
+        <h2 class="text-2xl font-bold text-rose-600 mb-4">
+          သဲလေးက အကောင်းဆုံးပဲ!
+        </h2>
+        <p
+          class="text-gray-700 text-base md:text-lg leading-relaxed whitespace-pre-line mb-6 font-semibold"
+        >
+          အရမ်းချစ်တယ်နော် အာဘွား.......😘 ကို အသံသွင်းပြီးထည့်မလို့ဘဲ
+          ရှော့အကြီးကြီးရှိနေလို့ မထည့်တော့တာပါ။ သဲစကား ကိုနားထောင်ပါ့မယ် 🥰
+        </p>
+      </div>
+    </div>
+
+    <!-- Reject Sad Modal -->
+    <div
+      id="rejectModal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"
+    >
+      <div
+        class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border-4 border-gray-200 transform scale-95 transition-transform duration-300"
+      >
+        <div class="text-6xl mb-3">💔😭</div>
+        <h2 class="text-2xl font-bold text-gray-700 mb-3">
+          ဝမ်းနည်းလိုက်တာ...
+        </h2>
+        <p class="text-rose-500 text-xl font-bold leading-relaxed mb-6">
+          ရက်စက်လိုက်တာ သဲရယ်... 🥺💔
+        </p>
+        <button
+          onclick="restartFlow()"
+          class="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl active:scale-95 transition-all"
+        >
+          ပြန်စဉ်းစားမယ် 🥺
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Audio Synthesizer Effects using Web Audio API
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      let audioCtx;
+
+      function initAudio() {
+        if (!audioCtx) {
+          audioCtx = new AudioContext();
+        }
+      }
+
+      function playSound(type) {
+        try {
+          initAudio();
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          const now = audioCtx.currentTime;
+
+          if (type === "next") {
+            // Cute chime pop
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(523.25, now); // C5
+            osc.frequency.exponentialRampToValueAtTime(880, now + 0.15); // A5
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+            osc.start(now);
+            osc.stop(now + 0.15);
+          } else if (type === "dodge") {
+            // Boing/dodge sound
+            osc.type = "triangle";
+            osc.frequency.setValueAtTime(300, now);
+            osc.frequency.linearRampToValueAtTime(150, now + 0.12);
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+            osc.start(now);
+            osc.stop(now + 0.12);
+          } else if (type === "love") {
+            // Heart success chord
+            const freqs = [523.25, 659.25, 783.99, 1046.5];
+            freqs.forEach((f, i) => {
+              const o = audioCtx.createOscillator();
+              const g = audioCtx.createGain();
+              o.type = "sine";
+              o.frequency.value = f;
+              o.connect(g);
+              g.connect(audioCtx.destination);
+              g.gain.setValueAtTime(0.1, now + i * 0.08);
+              g.gain.exponentialRampToValueAtTime(0.001, now + 0.5 + i * 0.08);
+              o.start(now + i * 0.08);
+              o.stop(now + 0.5 + i * 0.08);
+            });
+          } else if (type === "sad") {
+            // Sad descending tone
+            osc.type = "sawtooth";
+            osc.frequency.setValueAtTime(300, now);
+            osc.frequency.exponentialRampToValueAtTime(100, now + 0.4);
+            gain.gain.setValueAtTime(0.2, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+            osc.start(now);
+            osc.stop(now + 0.4);
+          }
+        } catch (e) {
+          console.log("Audio playback prevented or unsupported");
+        }
+      }
+
+      // Flow States
+      let currentStep = 1;
+      let rejectClickCount = 0;
+
+      // Myanmar Texts and Emojis mapping
+      const steps = [
+        {
+          text: "ကိုမနေ့က တရုတ်အဖွဲ့တစ်ခုက ကို့ကို မျက်နှာပြောင်လို့\n သွား hack လိုက်တာ သဲ sticker တွေ့လို့ယူလိုက်တာ သဲရဲ့",
+          sticker: "🐱‍💻",
+        },
+        {
+          text: "သဲမကြိုက်ရင် နောက်တစ်ခါအဲ့လိုမလုပ်တော့ဘူးနော် ကတိကတိ",
+          sticker: "🥺👉👈",
+        },
+        {
+          text: "မနေ့က အဖြစ်အပျက်အတွက် ကိုတောင်းပန်ပါတယ် သဲရယ်......",
+          sticker: "🙇‍♂️🌸",
+        },
+      ];
+
+      const rejectButtonTexts = [
+        "ခွင့်မလွှတ်ဘူး",
+        "တကယ်ကြီးလား!!",
+        "သေချာစဉ်းစားပါဦး",
+        "နှိပ်လို့မရတော့ဘူး",
+        "ဟ!!",
+        "သဲသဘောပါဘဲ",
+      ];
+
+      // DOM elements
+      const storyTextEl = document.getElementById("storyText");
+      const stickerIconEl = document.getElementById("stickerIcon");
+      const buttonAreaEl = document.getElementById("buttonArea");
+      const contentBoxEl = document.getElementById("contentBox");
+
+      // Render current step
+      function renderStep() {
+        // Trigger animation
+        contentBoxEl.classList.remove("fade-in");
+        void contentBoxEl.offsetWidth; // trigger reflow
+        contentBoxEl.classList.add("fade-in");
+
+        const stepData = steps[currentStep - 1];
+        storyTextEl.innerText = stepData.text;
+        stickerIconEl.innerText = stepData.sticker;
+
+        buttonAreaEl.innerHTML = "";
+
+        if (currentStep < 3) {
+          // Next Button
+          const nextBtn = document.createElement("button");
+          nextBtn.className =
+            "bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform active:scale-95 transition-all text-lg flex items-center gap-2 pulse-glow";
+          nextBtn.innerHTML = `<span>ဆက်သွားမည်</span> <i class="fa-solid fa-arrow-right text-sm"></i>`;
+          nextBtn.onclick = () => {
+            playSound("next");
+            currentStep++;
+            renderStep();
+          };
+          buttonAreaEl.appendChild(nextBtn);
+        } else {
+          // Step 3 Choice Buttons
+          const forgiveBtn = document.createElement("button");
+          forgiveBtn.className =
+            "bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transform active:scale-95 transition-all text-lg flex items-center gap-2";
+          forgiveBtn.innerHTML = `<i class="fa-solid fa-heart"></i> <span>ခွင့်လွှတ်တယ်</span>`;
+          forgiveBtn.onclick = handleForgive;
+
+          const rejectBtn = document.createElement("button");
+          rejectBtn.id = "rejectBtn";
+          rejectBtn.className =
+            "runaway-btn bg-gradient-to-r from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600 text-white font-bold py-3 px-6 rounded-full shadow-md text-lg flex items-center gap-2";
+          rejectBtn.innerText = rejectButtonTexts[0];
+
+          // Move only after a click so the label always updates on an attempt.
+          rejectBtn.onclick = (e) => handleRejectClick(e);
+
+          buttonAreaEl.appendChild(forgiveBtn);
+          buttonAreaEl.appendChild(rejectBtn);
+        }
+      }
+
+      // Handle "ခွင့်လွှတ်တယ်" Click
+      function handleForgive() {
+        playSound("love");
+        createSparkles();
+        const modal = document.getElementById("forgiveModal");
+        modal.classList.remove("hidden");
+        setTimeout(() => {
+          modal.classList.remove("opacity-0");
+          modal.querySelector("div").classList.remove("scale-95");
+          modal.querySelector("div").classList.add("scale-100");
+        }, 10);
+      }
+
+      // Move reject button to random position
+      function moveRejectButton(btn) {
+        playSound("dodge");
+        btn.style.position = "absolute";
+
+        const btnWidth = btn.offsetWidth || 140;
+        const btnHeight = btn.offsetHeight || 50;
+        const areaRect = buttonAreaEl.getBoundingClientRect();
+        const padding = 20;
+        const minX = Math.min(padding, Math.max(0, window.innerWidth - btnWidth));
+        const minY = Math.min(padding, Math.max(0, window.innerHeight - btnHeight));
+        const maxX = Math.max(minX, window.innerWidth - btnWidth - padding);
+        const maxY = Math.max(minY, window.innerHeight - btnHeight - padding);
+        const viewportX = minX + Math.floor(Math.random() * (maxX - minX + 1));
+        const viewportY = minY + Math.floor(Math.random() * (maxY - minY + 1));
+
+        btn.style.left = `${viewportX - areaRect.left}px`;
+        btn.style.top = `${viewportY - areaRect.top}px`;
+        btn.style.zIndex = "40";
+      }
+
+      function handleRejectClick(e) {
+        const btn = e.currentTarget;
+        rejectClickCount++;
+
+        if (rejectClickCount < 4) {
+          btn.innerText = rejectButtonTexts[rejectClickCount];
+          moveRejectButton(btn);
+        } else {
+          // 4th click: Trigger sad response
+          playSound("sad");
+          const modal = document.getElementById("rejectModal");
+          modal.classList.remove("hidden");
+          setTimeout(() => {
+            modal.classList.remove("opacity-0");
+            modal.querySelector("div").classList.remove("scale-95");
+            modal.querySelector("div").classList.add("scale-100");
+          }, 10);
+        }
+      }
+
+      // Restart Flow
+      function restartFlow() {
+        currentStep = 1;
+        rejectClickCount = 0;
+
+        // Hide modals
+        ["forgiveModal", "rejectModal"].forEach((id) => {
+          const modal = document.getElementById(id);
+          modal.classList.add("opacity-0");
+          modal.querySelector("div").classList.remove("scale-100");
+          modal.querySelector("div").classList.add("scale-95");
+          setTimeout(() => modal.classList.add("hidden"), 300);
+        });
+
+        renderStep();
+      }
+
+      // Create Background Animated Hearts
+      function createBackgroundHearts() {
+        const container = document.getElementById("heartsContainer");
+        const heartIcons = ["💖", "💕", "🌸", "✨", "💗"];
+
+        for (let i = 0; i < 20; i++) {
+          const heart = document.createElement("div");
+          heart.className = "bg-heart";
+          heart.innerText =
+            heartIcons[Math.floor(Math.random() * heartIcons.length)];
+          heart.style.left = `${Math.random() * 100}vw`;
+          heart.style.animationDuration = `${5 + Math.random() * 6}s`;
+          heart.style.animationDelay = `${Math.random() * 5}s`;
+          heart.style.fontSize = `${16 + Math.random() * 24}px`;
+          container.appendChild(heart);
+        }
+      }
+
+      // Sparkle Explosion Effect
+      function createSparkles() {
+        for (let i = 0; i < 30; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle text-rose-500 text-xl";
+          sparkle.innerText = ["❤️", "💖", "✨", "🌸"][
+            Math.floor(Math.random() * 4)
+          ];
+          sparkle.style.left = `${50 + (Math.random() - 0.5) * 60}%`;
+          sparkle.style.top = `${50 + (Math.random() - 0.5) * 60}%`;
+          document.body.appendChild(sparkle);
+
+          setTimeout(() => sparkle.remove(), 800);
+        }
+      }
+
+      // Init on Window Load
+      window.onload = function () {
+        createBackgroundHearts();
+        renderStep();
+      };
+    </script>
+  </body>
 </html>
